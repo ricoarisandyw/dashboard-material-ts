@@ -1,17 +1,18 @@
 import React from 'react'
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
+import Admin from './Admin';
 
 const hist = createBrowserHistory();
 
 const AppRoute: React.FC = () => {
     return (
-        <Router history={hist}>
+        <HashRouter>
             <Switch>
                 <Route path="/admin" component={Admin} />
                 <Redirect from="/" to="/admin/dashboard" />
             </Switch>
-        </Router>
+        </HashRouter>
     )    
 }
 

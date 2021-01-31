@@ -10,11 +10,18 @@ module.exports = {
     target: 'web',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].[hash].bundle.js',
+        filename: '[name].[fullhash].bundle.js',
         publicPath: '/',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+        alias: {
+            common: path.resolve(__dirname, 'src/common'),
+            assets: path.resolve(__dirname, 'src/assets'),
+            variables: path.resolve(__dirname, 'src/variables'),
+            services: path.resolve(__dirname, 'src/services')
+        },
+        modules: ['node_modules'],
     },
     module: {
         rules: [

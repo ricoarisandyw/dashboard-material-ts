@@ -6,16 +6,16 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-
-
-
-import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
-
 import bgImage from "../../images/sidebar-2.jpg";
 import logo from "../../images/reactlogo.png";
 
-import {dashboardRoutes} from './routes'
-import Sidebar from "../core/components/Sidebar/Sidebar";
+import dashboardRoutes, { generalRoutes } from './routes'
+import Sidebar from "../../common/Sidebar/Sidebar";
+import Navbar from "../../common/Navbars/Navbar";
+import FixedPlugin from "../../common/FixedPlugin/FixedPlugin";
+
+import styles from "../../assets/jss/material-dashboard-react/layouts/adminStyle";
+import Footer from "common/Footer/Footer";
 
 let ps: PerfectScrollbar;
 
@@ -51,22 +51,22 @@ const switchRoutes = (
   </Switch>
 );
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
 export default function Admin({ ...rest }) {
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
-  const mainPanel = React.createRef();
+  const mainPanel = React.createRef<HTMLDivElement>();
   // states and functions
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
   const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleImageClick = (image) => {
+  const handleImageClick: ((...args: any[]) => any) = (image) => {
     setImage(image);
   };
-  const handleColorClick = (color) => {
+  const handleColorClick: ((...args: any[]) => any) = (color) => {
     setColor(color);
   };
   const handleFixedClick = () => {
@@ -89,8 +89,8 @@ export default function Admin({ ...rest }) {
   };
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps = new PerfectScrollbar(mainPanel.current, {
+    if (navigator.platform.indexOf("Win") > -1 && mainPanel.current) {
+      ps = new PerfectScrollbar(mainPanel.current , {
         suppressScrollX: true,
         suppressScrollY: false,
       });
@@ -108,18 +108,18 @@ export default function Admin({ ...rest }) {
   return (
     <div className={classes.wrapper}>
       <Sidebar
-        routes={routes}
+        routes={dashboardRoutes}
         logoText={"Creative Tim"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
-        color={color}
+        bgColor={color}
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
-          routes={routes}
+          routes={dashboardRoutes}
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />

@@ -17,7 +17,7 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(s[ac]ss)$/i,
                 use: [
                     // Creates `style` nodes from JS strings
                     'style-loader',
@@ -26,7 +26,11 @@ module.exports = merge(common, {
                     // Compiles Sass to CSS
                     'sass-loader',
                 ],
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ]
     },
     plugins: [

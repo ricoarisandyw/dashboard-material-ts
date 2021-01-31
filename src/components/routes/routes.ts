@@ -7,14 +7,24 @@ import Notifications from "@material-ui/icons/Notifications";
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "../views/Dashboard/Dashboard";
-import UserProfile from "../views/UserProfile/UserProfile.js";
-import TableList from "../views/TableList/TableList.js";
-import Typography from "../views/Typography/Typography.js";
-import Icons from "../views/Icons/Icons.js";
-import Maps from "../views/Maps/Maps.js";
-import NotificationsPage from "../views/Notifications/Notifications.js";
+import UserProfile from "../views/UserProfile/UserProfile";
+import TableList from "../views/TableList/TableList";
+import Typography from "../views/Typography/Typography";
+import Icons from "../views/Icons/Icons";
+import Maps from "../views/Maps/Maps";
+import NotificationsPage from "../views/Notifications/Notifications";
 import AccountList from "../views/AccountList/AccountList";
 import InstitutionList from "../views/ClassList/InstitutionList";
+import Create from "../views/ClassList/Create";
+import Login from "../views/Login/Login";
+import CreateLesson from "../views/ClassList/CreateLesson";
+import CreateExam from "../views/ClassList/CreateExam";
+import CreateQuestion from "../views/ClassList/CreateQuestion";
+import Detail from "../views/ClassList/Detail";
+import ClassList from "../views/ClassList/ClassList";
+import DetailLesson from "../views/ClassList/DetailLesson";
+import DetailExam from "../views/ClassList/DetailExam";
+import DetailQuestion from "../views/ClassList/DetailQuestion";
 
 const dashboardRoutes = [
   {
@@ -92,3 +102,87 @@ const dashboardRoutes = [
 ];
 
 export default dashboardRoutes
+
+
+export const generalRoutes = [
+  {
+    path: "/login",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: Login,
+    layout: "",
+  },
+  {
+    path: "/create/class",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: Create,
+    layout: "/admin",
+  },
+  {
+    path: "/create/lesson",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: CreateLesson,
+    layout: "/admin",
+  },
+  {
+    path: "/create/exam",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: CreateExam,
+    layout: "/admin",
+  },
+  {
+    path: "/create/question",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: CreateQuestion,
+    layout: "/admin",
+  },
+  {
+    path: "/detail/class",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: Detail,
+    layout: "/admin",
+  },
+  {
+    path: "/detail/institution",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: ClassList,
+    layout: "/admin",
+  },
+  {
+    path: "/detail/lesson",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: DetailLesson,
+    layout: "/admin",
+  },
+  {
+    path: "/detail/exam",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: DetailExam,
+    layout: "/admin",
+  },
+  {
+    path: "/detail/question",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: DetailQuestion,
+    layout: "/admin",
+  },
+];
