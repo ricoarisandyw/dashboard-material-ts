@@ -1,0 +1,1 @@
+(self.webpackChunkmy_webpack=self.webpackChunkmy_webpack||[]).push([[3692],{75029:(e,r,t)=>{"use strict";t.d(r,{Z:()=>u});var n=/[A-Z]/g,s=/^ms-/,a={};function c(e){return"-"+e.toLowerCase()}const u=function(e){if(a.hasOwnProperty(e))return a[e];var r=e.replace(n,c);return a[e]=s.test(r)?"-"+r:r}}}]);
