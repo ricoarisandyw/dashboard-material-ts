@@ -20,8 +20,8 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, '../docs'),
+    publicPath: '/dashboard-material-ts',
     filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {
