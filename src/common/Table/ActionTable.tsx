@@ -23,7 +23,7 @@ interface ActionTableProps {
     "rose" |
     "gray"
   tableHead: string[]
-  tableData: string[][]
+  tableData: {}[]
   onAction: (index: number, action: string) => void
 };
 

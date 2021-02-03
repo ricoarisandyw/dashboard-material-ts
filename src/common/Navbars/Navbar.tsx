@@ -16,13 +16,13 @@ import Button from "common/CustomButtons/Button";
 
 import styles from "assets/jss/material-dashboard-react/components/headerStyle";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-export default function Header(props) {
+export default function Header(props: any) {
   const classes = useStyles();
   function makeBrand() {
     var name;
-    props.routes.map(prop => {
+    props.routes.map((prop:any) => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
         name = props.rtlActive ? prop.rtlName : prop.name;
       }
@@ -39,7 +39,7 @@ export default function Header(props) {
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
           {/* Here we create navbar brand, based on route name */}
-          <Button color="transparent" href="#" className={classes.title}>
+          <Button color="transparent" className={classes.title}>
             {makeBrand()}
           </Button>
         </div>

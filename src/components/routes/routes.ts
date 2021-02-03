@@ -25,6 +25,7 @@ import ClassList from "../views/ClassList/ClassList";
 import DetailLesson from "../views/ClassList/DetailLesson";
 import DetailExam from "../views/ClassList/DetailExam";
 import DetailQuestion from "../views/ClassList/DetailQuestion";
+import CreateInstitution from "../views/ClassList/CreateInstitution";
 
 const dashboardRoutes = [
   {
@@ -99,19 +100,13 @@ const dashboardRoutes = [
     component: NotificationsPage,
     layout: "/admin",
   },
-];
-
-export default dashboardRoutes
-
-
-export const generalRoutes = [
   {
-    path: "/login",
+    path: "/create/institution",
     name: "RTL Support",
     rtlName: "پشتیبانی از راست به چپ",
     icon: Language,
-    component: Login,
-    layout: "",
+    component: CreateInstitution,
+    layout: "/admin",
   },
   {
     path: "/create/class",
@@ -185,4 +180,18 @@ export const generalRoutes = [
     component: DetailQuestion,
     layout: "/admin",
   },
+];
+
+export default dashboardRoutes
+
+
+export const generalRoutes = [
+  {
+    path: "/login",
+    name: "RTL Support",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: Login,
+    layout: "",
+  }
 ];

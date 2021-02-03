@@ -20,35 +20,20 @@ import Footer from "common/Footer/Footer";
 let ps: PerfectScrollbar;
 
 const switchRoutes = (
-  <Switch>
-    {generalRoutes.map((prop, key) => {
-      return (
-        <Route
-          path={prop.layout + prop.path}
-          component={prop.component}
-          key={key}
-        />
-      );
-    })}
-    <Route path="/admin">
-      <Switch>
-        {dashboardRoutes.map((prop, key) => {
-          if (prop.layout === "/admin") {
-            return (
-              <Route
-                exact
-                path={prop.layout + prop.path}
-                component={prop.component}
-                key={key}
-              />
-            );
-          }
-          return null;
-        })}
-        <Redirect from="/admin" to="/admin/dashboard" />
-      </Switch>
-    </Route>
-  </Switch>
+  <Route path="/admin">
+    <Switch>
+      {dashboardRoutes.map((prop, key) => {
+          return (
+            <Route
+              exact
+              path={prop.layout + prop.path}
+              component={prop.component}
+              key={key}
+            />
+          );
+      })}
+    </Switch>
+  </Route>
 );
 
 const useStyles = makeStyles(styles as any);

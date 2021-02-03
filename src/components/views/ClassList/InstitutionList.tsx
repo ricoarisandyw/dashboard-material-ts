@@ -10,6 +10,7 @@ import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
 import { useHistory } from "react-router-dom";
 import InstitutionAPI from "services/InstitutionAPI";
+import { ClassModelHeader, ClassModelSeed, ClassSeed } from "./ClassSeed";
 
 const styles = {
   cardCategoryWhite: {
@@ -81,8 +82,8 @@ export default function InstitutionList() {
           <CardBody>
             <ActionTable
               tableHeaderColor="primary"
-              tableHead={["name", "address", "photo"]}
-              tableData={institutionList}
+              tableHead={ClassModelHeader}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
