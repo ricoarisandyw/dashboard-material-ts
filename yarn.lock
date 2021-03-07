@@ -6930,6 +6930,11 @@ markerwithlabel@^2.0.1:
   resolved "https://registry.yarnpkg.com/markerwithlabel/-/markerwithlabel-2.0.2.tgz#fa6aee4abb0ee553e24e2b708226858f58b8729e"
   integrity sha512-C/cbm1A0h/u54gwHk5ZJNdUU3V3+1BbCpRPMsMyFA7vF4yL+aB4rWpxACz29TpQ+cTg6/iQroExh0PMSRGtQFg==
 
+mathlive@^0.59.0:
+  version "0.59.0"
+  resolved "https://registry.yarnpkg.com/mathlive/-/mathlive-0.59.0.tgz#95e3720a8c16a295d266c36ddf9d6c8bfc363228"
+  integrity sha512-CUf7kAY1UWTvJm5IFJrFlXssyl851aGPNAdlchMbAMZQnryudQJE59BlrPTtAeY95k41PGqMmM8Vozj+We+hNA==
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
@@ -8685,6 +8690,14 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-math-view@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-math-view/-/react-math-view-1.2.0.tgz#f0c37c5ef21a77fece86b1c3883629a49a917462"
+  integrity sha512-+IqHHcdOHIRycztkePKsxcoWUqZtr/tO3pUOvn+QtjnH+ilua5pDUT0Qlo/0ekI6Mv2jUZIU4WWo7oD8kXqV/A==
+  dependencies:
+    lodash.isequal "^4.5.0"
+    mathlive "^0.59.0"
 
 react-overlays@^4.1.0:
   version "4.1.0"

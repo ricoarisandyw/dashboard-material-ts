@@ -1,5 +1,7 @@
+import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router";
+import './Login.scss'
 
 export default function Login() {
 
@@ -16,13 +18,20 @@ export default function Login() {
       height:"100vh",
       width:"100vw"
     }}>
-      <form style={{
-        margin:"auto"
-      }} onSubmit={handleSubmit}>
-        <input placeholder="username" name="username" />
-        <input placeholder="password" name="username" />
-        <input type="submit" value="Login" />
-      </form>
+      <div className="LoginBox">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit} style={{display:"grid"}}>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Username</InputLabel>
+            <Input id="my-input" aria-describedby="my-helper-text" />
+          </FormControl> 
+          <FormControl>
+            <InputLabel htmlFor="my-input">Password</InputLabel>
+            <Input id="my-input" aria-describedby="my-helper-text" />
+          </FormControl> 
+          <Button type="submit" style={{marginTop: "1rem"}} variant="contained" color="primary">Log in</Button>
+        </form>
+      </div>
     </div>
   );
 }

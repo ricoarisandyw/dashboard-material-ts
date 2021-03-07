@@ -1,17 +1,13 @@
 import React from "react";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// core components
-import GridItem from "common/Grid/GridItem";
-import GridContainer from "common/Grid/GridContainer";
 import ActionTable from "common/Table/ActionTable";
 import Card from "common/Card/Card";
 import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
-import { ClassSeed, ClassModelHeader } from "./ClassSeed";
-import "./ClassList.scss";
 import { useHistory, useLocation } from "react-router-dom";
-import ClassAPI from "services/ClassAPI";
+import { makeStyles } from "@material-ui/core";
+import { ClassSeed, ClassModelHeader, ClassModelSeed } from "../seed/ClassSeed";
+import GridItem from "common/Grid/GridItem";
+import GridContainer from "common/Grid/GridContainer";
 
 const styles = {
   cardCategoryWhite: {
@@ -45,38 +41,33 @@ const styles = {
 
 const useStyles = makeStyles(styles as any);
 
-export default function ClassList() {
+function DetailExam() {
+  const loc = useLocation();
   const classes = useStyles();
   const history = useHistory();
-  const location = useLocation();
 
-  const [classList, setClassList] = React.useState([]);
-
-  const handleAction = (index: number, action: string) => {
-    if (action === "VIEW") {
-      history.push("/admin/detail/class", ClassSeed[index]);
-    }
+  const handleAction = () => {
+    history.push("/admin/detail/question", loc.state);
   };
-
-  React.useEffect(() => {
-    ClassAPI()
-      .getByInstitutionId(1)
-      .then((res) => setClassList(res.values));
-  }, []);
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
+        <h2>Exam name : UAS</h2>
+        <hr />
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Class List</h4>
+            <h4 className={classes.cardTitleWhite}>Question List</h4>
             <p className={classes.cardCategoryWhite}>
-              {JSON.stringify(location.state)}
+              <a href="/admin/institution">PENS</a> /
+              <a href="/admin/institution">IT B</a> /
+              <a href="/admin/institution">Software Architecture</a> /
+              <a href="/admin/institution">UAS</a> /
             </p>
             <div className="control">
               <button
                 className="btn btn-success"
-                onClick={() => history.push("/admin/create/class")}
+                onClick={() => history.push("/admin/create/question")}
               >
                 +
               </button>
@@ -86,7 +77,7 @@ export default function ClassList() {
             <ActionTable
               tableHeaderColor="primary"
               tableHead={ClassModelHeader}
-              tableData={ClassSeed}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
@@ -95,3 +86,5 @@ export default function ClassList() {
     </GridContainer>
   );
 }
+
+export default DetailExam;

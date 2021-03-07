@@ -1,13 +1,18 @@
 import React from "react";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+// core components
+import GridItem from "common/Grid/GridItem";
+import GridContainer from "common/Grid/GridContainer";
 import ActionTable from "common/Table/ActionTable";
 import Card from "common/Card/Card";
 import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
-import { useHistory, useLocation } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
-import { ClassSeed, ClassModelHeader } from "./ClassSeed";
-import GridItem from "common/Grid/GridItem";
-import GridContainer from "common/Grid/GridContainer";
+import { ClassSeed, ClassModelHeader, ClassModelSeed } from "../seed/ClassSeed";
+import "../List.scss";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import ClassAPI from "services/ClassAPI";
+import { Typography } from "@material-ui/core";
 
 const styles = {
   cardCategoryWhite: {
@@ -39,33 +44,45 @@ const styles = {
   },
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-function Detail() {
-  const loc = useLocation();
+export default function ClassList() {
   const classes = useStyles();
   const history = useHistory();
+  const location = useLocation();
 
-  const handleAction = () => {
-    history.push("/admin/detail/lesson", loc.state);
+  const [classList, setClassList] = React.useState([]);
+
+  const handleAction = (index: number, action: string) => {
+    if (action === "VIEW") {
+      history.push("/admin/detail/class", ClassSeed[index]);
+    }
   };
+
+  React.useEffect(() => {
+    ClassAPI()
+      .getByInstitutionId(1)
+      .then((res) => setClassList(res.values));
+  }, []);
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <h2>Class name : PENS</h2>
-        <h4>Code : A1F23</h4>
-        <hr />
+        <div>
+          <Typography variant="h4">
+            Institution : PENS
+          </Typography>
+        </div>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Lesson List</h4>
+            <h4 className={classes.cardTitleWhite}>Class List</h4>
             <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
+              <Link to="/admin/institution">PENS</Link> /
             </p>
             <div className="control">
               <button
                 className="btn btn-success"
-                onClick={() => history.push("/admin/create/lesson")}
+                onClick={() => history.push("/admin/create/class")}
               >
                 +
               </button>
@@ -75,7 +92,7 @@ function Detail() {
             <ActionTable
               tableHeaderColor="primary"
               tableHead={ClassModelHeader}
-              tableData={ClassSeed}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
@@ -84,5 +101,3 @@ function Detail() {
     </GridContainer>
   );
 }
-
-export default Detail;

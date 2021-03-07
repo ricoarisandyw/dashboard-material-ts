@@ -3,9 +3,9 @@ import ActionTable from "common/Table/ActionTable";
 import Card from "common/Card/Card";
 import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import { ClassSeed, ClassModelHeader } from "./ClassSeed";
+import { ClassSeed, ClassModelHeader, ClassModelSeed } from "../seed/ClassSeed";
 import GridItem from "common/Grid/GridItem";
 import GridContainer from "common/Grid/GridContainer";
 
@@ -39,42 +39,38 @@ const styles = {
   },
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-function DetailLesson() {
+function DetailQuestion() {
   const loc = useLocation();
   const classes = useStyles();
   const history = useHistory();
 
   const handleAction = () => {
-    history.push("/admin/detail/exam", loc.state);
+    history.push("/admin/detail/question", loc.state);
   };
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <h2>Lesson name : Math</h2>
+        <h2>Question :</h2>
+        <h4>How many is 4 multiple by 7?</h4>
         <hr />
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Exam List</h4>
+            <h4 className={classes.cardTitleWhite}>Answer List</h4>
             <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
+              <Link to="/admin/institution">PENS</Link> /
+              <Link to="/admin/institution">IT B</Link> /
+              <Link to="/admin/institution">Software Architecture</Link> /
+              <Link to="/admin/institution">UAS</Link> /
             </p>
-            <div className="control">
-              <button
-                className="btn btn-success"
-                onClick={() => history.push("/admin/create/exam")}
-              >
-                +
-              </button>
-            </div>
           </CardHeader>
           <CardBody>
             <ActionTable
               tableHeaderColor="primary"
               tableHead={ClassModelHeader}
-              tableData={ClassSeed}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
@@ -84,4 +80,4 @@ function DetailLesson() {
   );
 }
 
-export default DetailLesson;
+export default DetailQuestion;

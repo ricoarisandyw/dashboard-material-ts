@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import bgImage from "../../images/sidebar-2.jpg";
 import logo from "../../images/reactlogo.png";
 
-import dashboardRoutes, { generalRoutes } from './routes'
+import sidebarRoutes, { adminRoutes, generalRoutes } from './routes'
 import Sidebar from "../../common/Sidebar/Sidebar";
 import Navbar from "../../common/Navbars/Navbar";
 import FixedPlugin from "../../common/FixedPlugin/FixedPlugin";
@@ -22,7 +22,7 @@ let ps: PerfectScrollbar;
 const switchRoutes = (
   <Route path="/admin">
     <Switch>
-      {dashboardRoutes.map((prop, key) => {
+      {sidebarRoutes.map((prop, key) => {
           return (
             <Route
               exact
@@ -32,6 +32,17 @@ const switchRoutes = (
             />
           );
       })}
+      {adminRoutes.map((prop, key) => {
+          return (
+            <Route
+              exact
+              path={prop.layout + prop.path}
+              component={prop.component}
+              key={key}
+            />
+          );
+      })}
+      <Redirect to="/admin/dashboard" />
     </Switch>
   </Route>
 );
@@ -93,7 +104,7 @@ export default function Admin({ ...rest }) {
   return (
     <div className={classes.wrapper}>
       <Sidebar
-        routes={dashboardRoutes}
+        routes={sidebarRoutes}
         logoText={"Creative Tim"}
         logo={logo}
         image={image}
@@ -104,7 +115,7 @@ export default function Admin({ ...rest }) {
       />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
-          routes={dashboardRoutes}
+          routes={sidebarRoutes}
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />

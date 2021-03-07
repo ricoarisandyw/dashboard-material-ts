@@ -14,20 +14,20 @@ import Icons from "../views/Icons/Icons";
 import Maps from "../views/Maps/Maps";
 import NotificationsPage from "../views/Notifications/Notifications";
 import AccountList from "../views/AccountList/AccountList";
-import InstitutionList from "../views/ClassList/InstitutionList";
-import Create from "../views/ClassList/Create";
+import InstitutionList from "../views/List/institution/InstitutionList";
 import Login from "../views/Login/Login";
-import CreateLesson from "../views/ClassList/CreateLesson";
-import CreateExam from "../views/ClassList/CreateExam";
-import CreateQuestion from "../views/ClassList/CreateQuestion";
-import Detail from "../views/ClassList/Detail";
-import ClassList from "../views/ClassList/ClassList";
-import DetailLesson from "../views/ClassList/DetailLesson";
-import DetailExam from "../views/ClassList/DetailExam";
-import DetailQuestion from "../views/ClassList/DetailQuestion";
-import CreateInstitution from "../views/ClassList/CreateInstitution";
+import CreateLesson from "../views/List/lesson/CreateLesson";
+import CreateExam from "../views/List/exam/CreateExam";
+import CreateQuestion from "../views/List/question/CreateQuestion";
+import Detail from "../views/List/classes/DetailClass";
+import ClassList from "../views/List/classes/ClassList";
+import DetailLesson from "../views/List/lesson/DetailLesson";
+import DetailExam from "../views/List/exam/DetailExam";
+import DetailQuestion from "../views/List/question/DetailQuestion";
+import CreateInstitution from "../views/List/institution/CreateInstitution";
+import CreateClass from "../views/List/classes/CreateClass";
 
-const dashboardRoutes = [
+const sidebarRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -99,7 +99,10 @@ const dashboardRoutes = [
     icon: Notifications,
     component: NotificationsPage,
     layout: "/admin",
-  },
+  }
+];
+
+export const adminRoutes = [
   {
     path: "/create/institution",
     name: "RTL Support",
@@ -113,7 +116,7 @@ const dashboardRoutes = [
     name: "RTL Support",
     rtlName: "پشتیبانی از راست به چپ",
     icon: Language,
-    component: Create,
+    component: CreateClass,
     layout: "/admin",
   },
   {
@@ -180,9 +183,9 @@ const dashboardRoutes = [
     component: DetailQuestion,
     layout: "/admin",
   },
-];
+]
 
-export default dashboardRoutes
+export default sidebarRoutes
 
 
 export const generalRoutes = [

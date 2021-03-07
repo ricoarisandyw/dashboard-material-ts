@@ -5,7 +5,7 @@ import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
 import { useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import { ClassSeed, ClassModelHeader } from "./ClassSeed";
+import { ClassModelHeader, ClassModelSeed } from "../seed/ClassSeed";
 import GridItem from "common/Grid/GridItem";
 import GridContainer from "common/Grid/GridContainer";
 
@@ -39,32 +39,34 @@ const styles = {
   },
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-function DetailExam() {
+function DetailLesson() {
   const loc = useLocation();
   const classes = useStyles();
   const history = useHistory();
 
   const handleAction = () => {
-    history.push("/admin/detail/question", loc.state);
+    history.push("/admin/detail/exam", loc.state);
   };
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <h2>Exam name : UAS</h2>
+        <h2>Lesson name : Math</h2>
         <hr />
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Question List</h4>
+            <h4 className={classes.cardTitleWhite}>Exam List</h4>
             <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
+              <a href="/admin/institution">PENS</a> /
+              <a href="/admin/institution">IT B</a> /
+              <a href="/admin/institution">Software Architecture</a> /
             </p>
             <div className="control">
               <button
                 className="btn btn-success"
-                onClick={() => history.push("/admin/create/question")}
+                onClick={() => history.push("/admin/create/exam")}
               >
                 +
               </button>
@@ -74,7 +76,7 @@ function DetailExam() {
             <ActionTable
               tableHeaderColor="primary"
               tableHead={ClassModelHeader}
-              tableData={ClassSeed}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
@@ -84,4 +86,4 @@ function DetailExam() {
   );
 }
 
-export default DetailExam;
+export default DetailLesson;

@@ -1,13 +1,16 @@
 import React from "react";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+// core components
+import GridItem from "common/Grid/GridItem";
+import GridContainer from "common/Grid/GridContainer";
 import ActionTable from "common/Table/ActionTable";
 import Card from "common/Card/Card";
 import CardHeader from "common/Card/CardHeader";
 import CardBody from "common/Card/CardBody";
-import { useHistory, useLocation } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
-import { ClassSeed, ClassModelHeader } from "./ClassSeed";
-import GridItem from "common/Grid/GridItem";
-import GridContainer from "common/Grid/GridContainer";
+import { useHistory } from "react-router-dom";
+import InstitutionAPI from "services/InstitutionAPI";
+import { ClassModelHeader, ClassModelSeed, ClassSeed } from "../seed/ClassSeed";
 
 const styles = {
   cardCategoryWhite: {
@@ -39,35 +42,45 @@ const styles = {
   },
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-function DetailQuestion() {
-  const loc = useLocation();
+export default function InstitutionList() {
+  const [institutionList, setInstitutionList] = React.useState([]);
   const classes = useStyles();
   const history = useHistory();
 
-  const handleAction = () => {
-    history.push("/admin/detail/question", loc.state);
+  const handleAction: ((...args: any[]) => any) = (index, action) => {
+    if (action === "VIEW") {
+      history.push("/admin/detail/institution", institutionList[index]);
+    }
   };
+
+  React.useEffect(() => {
+    InstitutionAPI()
+      .getAll()
+      .then((res) => setInstitutionList(res.values));
+  }, []);
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <h2>Question :</h2>
-        <h4>How many is 4 multiple by 7?</h4>
-        <hr />
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Answer List</h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
+            <h4 className={classes.cardTitleWhite}>Institution List</h4> 
+            <div className="control">
+              <button
+                className="btn btn-success"
+                onClick={() => history.push("/admin/create/institution")}
+              >
+                +
+              </button>
+            </div>
           </CardHeader>
           <CardBody>
             <ActionTable
               tableHeaderColor="primary"
               tableHead={ClassModelHeader}
-              tableData={ClassSeed}
+              tableData={ClassModelSeed}
               onAction={handleAction}
             />
           </CardBody>
@@ -76,5 +89,3 @@ function DetailQuestion() {
     </GridContainer>
   );
 }
-
-export default DetailQuestion;

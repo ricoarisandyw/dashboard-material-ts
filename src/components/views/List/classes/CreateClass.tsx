@@ -14,7 +14,7 @@ export default function Create() {
       <FormControl style={{ width: "100%" }}>
         <InputLabel htmlFor="my-input">Class Name</InputLabel>
         <Input id="my-input" aria-describedby="my-helper-text" />
-      </FormControl>
+      </FormControl> 
       <Button style={{ marginTop: "1rem" }} variant="contained" color="primary">
         Create
       </Button>
